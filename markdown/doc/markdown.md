@@ -1,7 +1,7 @@
 # markdown基本使用方法
 : 关于Markdown基本用法, 基本满足日常的使用
 更详细的用法可自行去官方文档学习
-用文本编辑器打开此文档后可查看源码,所以文中只是做了简单的注释.
+用文本编辑器打开此文档后可查看源码, 所以文中只是做了简单的注释.
 
 [TOC]
 ###大纲
@@ -60,7 +60,7 @@ def hello():
 echo 'hello, world!'
 ~~~
 
-: C# 代码块
+: .net 代码块
 ~~~.net
 System.Console.WriteLine("Hello world");
 ~~~
@@ -74,16 +74,17 @@ _这还是一个斜体_
 
 ###超链接和图片
 ######行内式
-![图片](http://example.com "picture title")
+![图片](../src/nn.png "picture title")
 [超链接](url "link title")
 
 ######参考式
 : 参考式链接一般用在学术论文上, 或某个连接在文章中多出使用.
 ![图片][Link]
-[Link]:http://example.com "picture title"
+[Link]:../src/nn.png "picture title"
+
 [超链接][Clink]
 [Clink]:http://example.com "Link title"
-
+> 图片就是引入的图片
 ######自动连接
 : Markdown 支持比较简短的自动链接形式来处理网址和电子邮箱信箱
 只需要用`< >`包起来
