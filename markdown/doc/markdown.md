@@ -45,12 +45,11 @@ python
 ### 代码块
 > 缩进4个` `(这是个空格)或一个`tab`
 感觉好难控制, 可以看下边的方式
+
         Here is an example of AppleScript:
         tell application "Foo"
             beep
         end tell
-    
-
 
 > python 代码块
 ~~~python
@@ -90,26 +89,28 @@ _这还是一个斜体_
 ### 超链接和图片
 ###### 行内式
 ![图片](../src/nn.png "picture title")
+
 [超链接](url "link title")
 
 ###### 参考式
 > 参考式链接一般用在学术论文上, 或某个连接在文章中多出使用.
+
 ![图片][Link]
 [Link]:../src/nn.png "picture title"
 
 [超链接][Clink]
 [Clink]:http://example.com "Link title"
 > 图片就是引入的图片
+
 ###### 自动连接
 > Markdown 支持比较简短的自动链接形式来处理网址和电子邮箱信箱
 只需要用`< >`包起来
+
 <http://example.com>
 <address@example.com>
 > 图片是:`![图片](url)`
 > 超链接:`[超链接](url)`
 > 图片只比超链接多了个`!`
-
-
 
 ### 引用
 > 引用区块内可以使用其他的Markdown语法, 包括标题, 列表, 代码区块等
