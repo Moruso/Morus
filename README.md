@@ -1,2 +1,7 @@
 # Mo的个人博客.
-主要用来存放一些自己从别的地方学来的东西和一些自己写的东西加上自己的见解,还有一些代码示例,来提高自己的能力
+
+## [Markdown 相关](markdown/README.md)
+* [mardown基本用法](doc/markdown.md)
+
+## [Python 相关](python/README.md)
+* [local nonlocal global](python/doc/local-gloabl.md)
