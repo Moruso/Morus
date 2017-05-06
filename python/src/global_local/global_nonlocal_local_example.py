@@ -35,13 +35,7 @@ def scope_test():
     print("\t>> scope_test_spam:{}, id:{}".format(spam, id(spam)))
     print(") # scope_test end")
 
-def main():
-    print("\tfunction main(")
-    print("\t\tmain_spam:{}, id:{}".format(spam, id(spam)))
-    print("\t)# main end")
-
 spam = 'begin_spam'
-main()
 print("global_spam:{}, id:{}".format(spam, id(spam)))
 scope_test()
 print("global_spam:{}, id:{}".format(spam, id(spam)))

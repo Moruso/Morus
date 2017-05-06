@@ -175,13 +175,8 @@ def scope_test():
     print("\t>> scope_test_spam:{}, id:{}".format(spam, id(spam)))
     print(") # scope_test end")
 
-def main():
-    print("\tfunction main(")
-    print("\t\tmain_spam:{}, id:{}".format(spam, id(spam)))
-    print("\t)# main end")
 
 spam = 'begin_spam'
-main()
 print("global_spam:{}, id:{}".format(spam, id(spam)))
 scope_test()
 print("global_spam:{}, id:{}".format(spam, id(spam)))
@@ -190,9 +185,6 @@ print("global_spam:{}, id:{}".format(spam, id(spam)))
 
 运行结果
 ~~~bash
-    function main(
-        main_spam:begin_spam, id:460245727856
-    )# main end
 global_spam:begin_spam, id:460245727856
 function scope_test(
     >> scope_test_spam:test_scope_spam, id:460245382960
@@ -212,8 +204,7 @@ function scope_test(
 ) # scope_test end
 global_spam:global_spam, id:460245382832
 ~~~
-
->* 先说这个例子中main函数的作用就是为了证明: main函数的局部变量也是全局变量(main的特殊性).
+>* main()函数内定义的变量也不是全局变量.
 >* 我们先定义了一个全局变量 `spam='begin_spam'`, 然后函数scope_test定义了自己的局部变量`spam='test_scope_spam'`, scope_test函数中的do_local函数同样定义了自己的局部变量`spam='local_spam'`从输出的结果和id我们发现这3个变量是相互独立的.
 >* do_nonlocal函数, 使用了nonlocal关键字修改了spam, 发现scop_test的局部变量spam也被修改了. 但是全局的spam并没有变化
 >* do_global函数, 使用了global关键字修改了spam, 我们发现scop_test的spam并没有变化.而全局的spam被修改了
@@ -223,7 +214,7 @@ global_spam:global_spam, id:460245382832
 ### nonlocal
 : 我们回头再看nonlocal, python3新增的功能
 
-1. 我们看看上层函数包不包括main即当上层变量是全局变量的时候能否使用
+1. 我们看看当上层变量是全局变量的时候能否使用
 ~~~python
 def scop_test():
     nonlocal spam
@@ -239,7 +230,7 @@ File "E:\myproject\morus\python\src\global_local\nonlocal_var.py", line 2
 SyntaxError: no binding for nonlocal 'spam' found
 ~~~
 
-> 看来上层函数不包括main, 如果上层函数没有定义这个变量就会报错.
+> 看来上层函数不包括全局变量, 如果上层函数没有定义这个变量就会报错.
 
 2. 来看看上层是上一层, 还是上多层.
 
