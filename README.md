@@ -1,4 +1,4 @@
-# Mo的个人博客.
+# Mo的知识汇总.
 
 ## [Markdown 相关](markdown/README.md)
 * [mardown基本用法](markdown/doc/markdown.md)
