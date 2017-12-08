@@ -23,16 +23,18 @@
 
 * 添加app到project_name/settings.py
 
-	~~~ shell
+	~~~shell
 	INSTALLED_APPS = [
 	    ......
 	'app_name.apps.App_nameConfig'
 	]
 	~~~
-    > 在INSTALLED_APPS = [ ]行添加配置
+	
+	> 在INSTALLED_APPS = [ ]行添加配置
 
 * 创建app urls映射文件
-> 创建```app_name/urls.py```
+
+	> 创建```app_name/urls.py```
 
 	~~~ python
 	#encoding: utf-8
@@ -44,7 +46,8 @@
 
 	
 * 添加app urls 映射到project urls
-> 修改project_name/urls.py	
+
+	> 修改project_name/urls.py	
 
 	~~~python
 	from django.conf.urls import url, include
@@ -57,8 +60,7 @@
 	~~~
 	
 	
-#### 配置项目
-> 修改`project_name/project_name/settings.py`
+#### 配置项目(`project_name/project_name/settings.py`)
  
 * 允许访问的主机名
 	
@@ -73,8 +75,7 @@
 python manage.py runserver IP:PORT
 ~~~
 
-#### 额外配置
-> 修改`project_name/project_name/settings.py`
+#### 额外配置(修改`project_name/project_name/settings.py`)
 
 * 配置模板目录
 
@@ -95,6 +96,7 @@ python manage.py runserver IP:PORT
 	    },
 	]
 	~~~
+	
 * 配置数据库
 
 	~~~python
@@ -110,6 +112,7 @@ python manage.py runserver IP:PORT
 	    }
 	}
 	~~~
+	
 * 配置静态文件
 
 	~~~ python
