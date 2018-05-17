@@ -80,7 +80,7 @@ class MyView(LoginRequiredMixin, View):
     redirect_field_name = 'redirect_to'
 ~~~ 
 
-### 已登录用户限制
+### 已登录用户的访问限制
 ##### if 判断， 例如对电子邮件的限制
 ~~~ python 
 from django.shortcuts import redirect
@@ -138,6 +138,7 @@ def my_view(request):
 
 
 ##### PermissionRequiredMixin
+类继承
 
 ~~~ python 
 from django.contrib.auth.mixins import PermissionRequiredMixin
