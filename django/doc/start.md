@@ -133,6 +133,6 @@ python manage.py runserver IP:PORT
 * modesl DDL修改同步
 	
 	~~~shell
-	python manager.py makemigrations
-	python manager.py migrate
+	python manage.py makemigrations
+	python manage.py migrate
 	~~~
