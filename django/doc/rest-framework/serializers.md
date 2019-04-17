@@ -20,25 +20,25 @@
 ### Field 
 
 ### BaseSerializer  
+    
+> * serializer 基类,继承于 Field
+> * BaseSerializer类是编写自定义序列化器实现可以使用的最小类
 
-    serializer 基类,继承于 Field
-    BaseSerializer类是编写自定义序列化器实现可以使用的最小类
+<!-- if a `data=` argument is passed then:
 
-    if a `data=` argument is passed then:
+.is_valid() - Available.
+.initial_data - Available.
+.validated_data - Only available after calling `is_valid()`
+.errors - Only available after calling `is_valid()`
+.data - Only available after calling `is_valid()`
 
-    .is_valid() - Available.
-    .initial_data - Available.
-    .validated_data - Only available after calling `is_valid()`
-    .errors - Only available after calling `is_valid()`
-    .data - Only available after calling `is_valid()`
+If a `data=` argument is not passed then:
 
-    If a `data=` argument is not passed then:
-
-    .is_valid() - Not available.
-    .initial_data - Not available.
-    .validated_data - Not available.
-    .errors - Not available.
-    .data - Available.
+.is_valid() - Not available.
+.initial_data - Not available.
+.validated_data - Not available.
+.errors - Not available.
+.data - Available. -->
 <!-- 
 常用方法:
 
@@ -77,7 +77,7 @@
     自动创建一个Serializer类并且字段和我们django Model字段相互对应.
 
 
-#### ModelSerializer 和 Serializer 的区别：
+###### ModelSerializer 和 Serializer 的区别：
 
 * 根据模型自动为您生成一组字段。
 * 自动为序列化器生成验证器，例如unique_together验证器。
