@@ -44,7 +44,7 @@ NameError: name 'local_var' is not defined
 > 报错 提示 变量local_var 没有定义
 
 ### 全局变量 global
-: 在所有函数外部定义的变量称为全局变量（Global Variable），它的作用域默认是整个程序
+: 在所有函数外部定义的变量称为全局变量(Global Variable)，它的作用域默认是整个程序
 
 ~~~python
 global_var = "this is a global var"

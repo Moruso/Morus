@@ -123,7 +123,7 @@ class MyView(UserPassesTestMixin, View):
         return self.request.user.email.endswith('@example.com')
 ~~~
 
-##### permission_required（perm，login_url = None，raise_exception = False）
+##### permission_required(perm，login_url = None，raise_exception = False)
 使用装饰
 
 ~~~ python
