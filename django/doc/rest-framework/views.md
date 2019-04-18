@@ -18,57 +18,57 @@
 ### [mixins](./view-mixins.md)
 > 混合类，作用比较简单
 
-* CreateModelMixin   
-    - ***创建一个model实例***
-* ListModelMixin 
-    - ***List a queryset***   
-* RetrieveModelMixin
-    - ***Retrieve a model instance***
-* UpdateModelMixin
-    - ***Update a model instance***
-* DestroyModelMixin
-    - ***Destroy a model instance***
+###### CreateModelMixin   
+    创建一个model实例
+###### ListModelMixin 
+    List a queryset   
+###### RetrieveModelMixin
+    Retrieve a model instance
+###### UpdateModelMixin
+    Update a model instance
+###### DestroyModelMixin
+    Destroy a model instance
     
 ### Generic views
 
-> 允许您快速构建与数据库模型紧密映射的API view, 如果通用视图
+> 允许您快速构建与数据库模型紧密映射的API view, 如果通用视图不适合您的API的需要，你可以使用常规APIView类,或重用mixin和基类使用的通用视图来组成自己的组可重用通用视图
 
-* GenericAPIView
-    - ***Base class for all other generic views***
-* CreateAPIView
-    - ***Concrete view for creating a model instance***
-* ListAPIView
-    - ***Concrete view for listing a queryset***
-* RetrieveAPIView
-    - ***Concrete view for retrieving a model instance***
-* DestroyAPIView
-    - ***Concrete view for deleting a model instance***
-* UpdateAPIView
-    - ***Concrete view for updating a model instance***
-* ListCreateAPIView
-    - ***Concrete view for listing a queryset or creating a model instance.***
-* RetrieveUpdateAPIView
-    - ***Concrete view for retrieving, updating a model instance***
-* RetrieveDestroyAPIView
-    - ***Concrete view for retrieving or deleting a model instance***
-* RetrieveUpdateDestroyAPIView
-    - ***Concrete view for retrieving, updating or deleting a model instance***
+###### GenericAPIView
+    Base class for all other generic views
+###### CreateAPIView
+    Concrete view for creating a model instance
+###### ListAPIView
+    Concrete view for listing a queryset
+###### RetrieveAPIView
+    Concrete view for retrieving a model instance
+###### DestroyAPIView
+    Concrete view for deleting a model instance
+###### UpdateAPIView
+    Concrete view for updating a model instance
+###### ListCreateAPIView
+    Concrete view for listing a queryset or creating a model instance.
+###### RetrieveUpdateAPIView
+    Concrete view for retrieving, updating a model instance
+###### RetrieveDestroyAPIView
+    Concrete view for retrieving or deleting a model instance
+###### RetrieveUpdateDestroyAPIView
+    Concrete view for retrieving, updating or deleting a model instance
 
 ### View Sets
 
 > ViewSetMixin 重写了.as_view()方法，使其可以接收'action'参数并绑定到相应的HTTP方法实现对资源的操作, 其他的View 只是继承了相应的父类，并没有增加额外的操作
-* ViewSetMixin
-* ViewSet
-* GenericViewSet
-* ReadOnlyModelViewSet
-* ModelViewSet
+###### ViewSetMixin
+###### ViewSet
+###### GenericViewSet
+###### ReadOnlyModelViewSet
+###### ModelViewSet
 
 
 ### decorator
 
-* api_view
-* API policy decorators
-* View schema decorator
+###### api_view
+###### API policy decorators
+###### View schema decorator
 <!-- ### @api_view
 
 > @api_view(http_method_names=['GET'])
