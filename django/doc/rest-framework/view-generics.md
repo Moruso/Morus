@@ -144,3 +144,39 @@ def perform_update(self, serializer):
     instance = serializer.save()
     send_email_confirmation(user=self.request.user, modified=instance)
 ~~~ 
+
+    你还可以使用这些钩子来提供额外的验证，通过抛出ValidationError()，如果您需要在数据库保存时应用某些验证逻辑，这可能很有用。例如：
+
+~~~ python
+
+def perform_create(self, serializer):
+    queryset = SignupRequest.objects.filter(user=self.request.user)
+    if queryset.exists():
+        raise ValidationError('You have already signed up')
+    serializer.save(user=self.request.user)
+
+~~~
+> 这些方法取代了旧版本的2.x pre_save，post_save，pre_delete和post_delete方法，这些方法已不再可用。
+
+#### Other methods:
+    您通常不需要覆盖以下方法，但如果您使用GenericAPIView编写自定义视图，则可能需要调用它们。
+
+###### get_serializer_context（self）
+
+    返回一个字典，其中包含应提供给序列化程序的任何额外上下文。默认包括'request','view', 'format' keys。
+
+###### get_serializer(self, instance=None, data=None, many=False, partial=False)
+
+    返回一个 serializer 实例
+
+###### get_paginated_response（self，data）
+    
+    返回分页样式的Response对象。
+
+###### paginate_queryset（self，queryset）
+
+    如果需要，可以返回查询集，返回页面对象;如果没有为此视图配置分页，则为“None”。
+
+###### filter_queryset（self，queryset） 
+
+    给定一个查询集，使用正在使用的过滤后端进行过滤，返回一个新的查询集。
