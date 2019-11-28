@@ -1,5 +1,11 @@
-### pod
+# Pod Example
+
+[TOC]
+
+## pod
+
 ~~~ yaml
+
 apiVersion: v1
 kind: Pod
 metadata:
@@ -10,10 +16,10 @@ spec:
       image: ikubernetes/myapp:v1
 ~~~
 
-
-### pod-with-env
+## pod-with-env
 
 ~~~ yaml
+
 apiVersion: v1
 kind: Pod
 metadata:
@@ -29,10 +35,10 @@ spec:
           value: info
 ~~~
 
-
-### pod-with-port
+## pod-with-port
 
 ~~~ yaml
+
 apiVersion: v1
 kind: Pod
 metadata:
@@ -47,9 +53,10 @@ spec:
           protocol: TCP
 ~~~
 
-### pod-use-hostnetwork
+## pod-use-hostnetwork
 
 ~~~ yaml
+
 apiVersion: v1
 kind: Pod
 metadata:
@@ -62,9 +69,10 @@ spec:
 
 ~~~
 
-### pod-with-securitycontext
+## pod-with-securitycontext
 
 ~~~ yaml
+
 apiVersion: v1
 kind: Pod
 metadata:
@@ -78,11 +86,13 @@ spec:
         runAsNonRoot: true
         runAsUser: 1000
         allowPrivilegeEscalation: false
+
 ~~~
 
-### pod-with-labels
+## pod-with-labels
 
 ~~~ yaml
+
 apiVersion: v1
 kind: Pod
 metadata:
@@ -95,9 +105,10 @@ spec:
       image: ikubernetes/myapp:v1
   nodeSelector:
       disktype:ssd
+
 ~~~
 
-### pod-initcontainers
+## pod-initcontainers
 
 ~~~ yaml
 apiVersion: v1
@@ -115,9 +126,10 @@ spec:
     - name: init-someting
       image: busybox
       command: ['sh', '-c', 'sleep 10']
+
 ~~~
 
-### pod-with-lifecycle
+## pod-with-lifecycle
 
 ~~~ yaml
 
@@ -136,7 +148,7 @@ spec:
 
 ~~~
 
-### pod-with-httpget
+## pod-with-httpget
 
 ~~~ yaml
 apiVersion: v1
@@ -161,12 +173,13 @@ spec:
           path: /healthz
           port: http
           scheme: HTTP
-      
-~~~ 
 
-### pod-readiness-exec
+~~~
+
+## pod-readiness-exec
 
 ~~~ yaml
+
 apiVersion: v1
 kind: Pod
 metadata:
@@ -178,18 +191,19 @@ spec:
     - name: readliness-demo
       image: busybox
       args: ["/bin/sh", "-c", "while true; do rm -rf /tmp/ready; sleep 30; touch /tmp/ready; sleep 300; done"]
-    
+
       readinessProbe:
         exec:
           command: ["test", "-e", "/tmp/ready"]
         initialDelaySeconds: 5
         periodSeconds: 5
-        
+
 ~~~
 
-### pod-resouces-demo
+## pod-resouces-demo
 
 ~~~ yaml
+
 apiVersion: v1
 kind: Pod
 metadata:
@@ -203,11 +217,13 @@ spec:
         requests:
           memory: "128Mi"
           cpu: "200m"
-          
+
 ~~~
-### pod-with-memleak
+
+## pod-with-memleak
 
 ~~~ yaml
+
 apiVersion: v1
 kind: Pod
 metadata:
@@ -227,9 +243,10 @@ spec:
           cpu: "1"
 ~~~
 
-### rs-demo
+## rs-demo
 
 ~~~ yaml
+
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
@@ -253,9 +270,10 @@ spec:
 
 ~~~
 
-### deployment
+## deployment
 
 ~~~ yaml
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -278,9 +296,10 @@ spec:
               name: http
 ~~~
 
-### DaemonSet
+## DaemonSet
 
 ~~~ yaml
+
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
@@ -308,7 +327,7 @@ spec:
 
 ~~~
 
-### job
+## job
 
 ~~~ yaml
 
@@ -327,9 +346,10 @@ spec:
 
 ~~~
 
-### job-multi
+## job-multi
 
 ~~~ yaml
+
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -344,12 +364,13 @@ spec:
           image: alpine
           command: ["/bin/sh", "-c", "sleep 20"]
       restartPolicy: OnFailure
-      
+
 ~~~
 
-### svc
+## svc
 
 ~~~ yaml
+
 kind: Service
 apiVersion: v1
 metadata:
@@ -360,4 +381,50 @@ spec:
   ports:
     - port:  80
       targetPort:  80
+~~~
+
+## PV
+
+~~~ yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-nfs-0001
+  labels:
+    release: stable
+spec:
+  capacity:
+    storage: 25Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: dynamic-data
+  mountOptions:
+    - hard
+    - nfsvers=4.1
+  nfs:
+    path: "/data/public"
+    server: 192.168.3.16
+
+~~~
+
+## PVC-nfs
+
+~~~ yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-nfs-0001
+  lables:
+    release: "stable"
+spec:
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: dynamic-data
+
 ~~~
